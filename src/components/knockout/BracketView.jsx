@@ -91,7 +91,7 @@ const BracketView = ({ bracket, predictions, onSelectWinner }) => {
           total={2}
         />
 
-        <div className="flex flex-col justify-around h-full py-4 gap-5">
+        <div className="flex flex-col justify-center h-full py-4 gap-5">
           {/* Third Place Match Card */}
           <div className="flex flex-col gap-2">
             <span className="text-[11px] font-bold text-amber-300 uppercase tracking-widest px-1 drop-shadow-sm">
