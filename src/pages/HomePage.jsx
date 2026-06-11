@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useTournament } from '../hooks/useTournament';
 import PageWrapper from '../components/layout/PageWrapper';
 import ProgressBar from '../components/common/ProgressBar';
-import { Calendar, Play, Lock, HelpCircle, Trophy } from 'lucide-react';
+import { Calendar, Play, Lock, HelpCircle } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 /**
  * HomePage — Tournament Predictor Dashboard and welcome hero.
@@ -29,7 +30,7 @@ const HomePage = () => {
       {/* Hero Header */}
       <div className="text-center flex flex-col items-center gap-4 max-w-3xl mx-auto">
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-fifa-blue to-fifa-gold flex items-center justify-center shadow-xl shadow-fifa-gold/10 mb-2 animate-bounce">
-          <Trophy size={36} className="text-fifa-dark" strokeWidth={2.5} />
+          <img src={logo} alt="Logo" className="w-13 h-13 object-contains" />
         </div>
         <span className="text-xs uppercase font-extrabold tracking-widest text-fifa-gold">
           Simulate the Entire Tournament

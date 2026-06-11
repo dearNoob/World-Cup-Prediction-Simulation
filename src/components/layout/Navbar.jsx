@@ -3,7 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useTournament } from '../../hooks/useTournament';
 import Modal from '../common/Modal';
 import Button from '../common/Button';
-import { RotateCcw, Award, Menu, X, Trophy } from 'lucide-react';
+import { RotateCcw, Award, Menu, X } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 /**
  * Navbar — Sticky header navigation with links and a tournament reset trigger.
@@ -27,9 +28,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo / Brand */}
           <NavLink to="/" className="flex items-center gap-2 text-white hover:opacity-95 select-none">
-            <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-fifa-blue to-fifa-gold flex items-center justify-center shadow-md shadow-fifa-gold/10">
-              <Trophy size={18} className="text-fifa-dark" strokeWidth={2.5} />
-            </span>
+            <img src={logo} alt="FIFA World Cup Logo" className="w-10 h-10 object-contain" />
             <div className="flex flex-col">
               <span className="text-sm font-black tracking-tight leading-none uppercase">
                 FIFA World Cup
