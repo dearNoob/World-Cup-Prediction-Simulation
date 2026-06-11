@@ -83,7 +83,7 @@ const BracketView = ({ bracket, predictions, onSelectWinner }) => {
       />
 
       {/* 5. Finals Column (Final + Third Place Match) */}
-      <div className={`flex flex-col gap-6 min-w-[260px] max-w-[320px] flex-1 ${finalLocked ? 'opacity-40 select-none pointer-events-none' : ''}`}>
+      <div className={`flex flex-col gap-4 min-w-[280px] max-w-[340px] flex-1 transition-all duration-300 ${finalLocked ? 'opacity-50 select-none pointer-events-none blur-sm' : ''}`}>
         {/* Column Header */}
         <RoundLabel
           title="The Finals"
@@ -91,11 +91,11 @@ const BracketView = ({ bracket, predictions, onSelectWinner }) => {
           total={2}
         />
 
-        <div className="flex flex-col justify-around h-full py-4 gap-8">
+        <div className="flex flex-col justify-around h-full py-4 gap-5">
           {/* Third Place Match Card */}
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-fifa-gold uppercase tracking-wider px-1">
-              Third Place Playoff
+            <span className="text-[11px] font-bold text-amber-300 uppercase tracking-widest px-1 drop-shadow-sm">
+              🥉 Third Place Playoff
             </span>
             <KnockoutMatchCard
               match={thirdPlace}
@@ -107,8 +107,8 @@ const BracketView = ({ bracket, predictions, onSelectWinner }) => {
 
           {/* The Final Match Card */}
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider px-1">
-              World Cup Final
+            <span className="text-[11px] font-bold text-fifa-gold uppercase tracking-widest px-1 drop-shadow-sm">
+              🏆 World Cup Final
             </span>
             <KnockoutMatchCard
               match={final}

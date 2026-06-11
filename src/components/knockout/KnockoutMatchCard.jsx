@@ -34,36 +34,36 @@ const KnockoutMatchCard = ({ match, prediction, onSelectWinner, matchLabel }) =>
   const isAwayEliminated = winnerId !== null && awayTeam !== null && winnerId !== awayTeam.id;
 
   return (
-    <div className="knockout-card border border-fifa-border/60 hover:border-fifa-gold/30 transition-all duration-300">
+    <div className="knockout-card group border border-fifa-border/50 hover:border-fifa-gold/60 hover:shadow-lg hover:shadow-fifa-gold/10 transition-all duration-300 bg-gradient-to-br from-fifa-card/80 to-fifa-card/60 backdrop-blur-sm rounded-lg overflow-hidden">
       {/* Match Label Header */}
-      <div className="bg-fifa-border/30 border-b border-fifa-border/40 px-3 py-1.5 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-fifa-muted">
-        <span>{matchLabel}</span>
+      <div className="bg-gradient-to-r from-fifa-blue/20 to-fifa-gold/10 border-b border-fifa-gold/20 px-3 py-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-fifa-muted">
+        <span className="group-hover:text-fifa-gold/80 transition-colors">{matchLabel}</span>
         {winnerId && (
-          <span className="text-fifa-gold flex items-center gap-1">
-            <Check size={10} strokeWidth={3} /> Decided
+          <span className="text-fifa-gold flex items-center gap-1 bg-fifa-gold/10 px-2 py-0.5 rounded animate-pulse">
+            <Check size={11} strokeWidth={3} /> Decided
           </span>
         )}
       </div>
 
       {/* Team rows */}
-      <div className="flex flex-col divide-y divide-fifa-border/40">
+      <div className="flex flex-col divide-y divide-fifa-border/30">
         {/* Home Team Row */}
         <div
           onClick={handleSelectHome}
-          className={`knockout-team ${
+          className={`knockout-team transition-all duration-300 ${
             !homeTeam
-              ? 'knockout-team-tbd'
+              ? 'knockout-team-tbd opacity-40 cursor-default'
               : isHomeSelected
-              ? 'knockout-team-selected'
+              ? 'knockout-team-selected bg-gradient-to-r from-fifa-gold/15 to-transparent border-l-2 border-fifa-gold'
               : isHomeEliminated
-              ? 'knockout-team-eliminated'
-              : 'hover:bg-white/5'
+              ? 'knockout-team-eliminated opacity-30'
+              : 'hover:bg-white/5 cursor-pointer'
           }`}
         >
-          <TeamName team={homeTeam} flagSize={20} className="text-xs font-semibold flex-1 text-white" />
+          <TeamName team={homeTeam} flagSize={22} className="text-sm font-bold flex-1 text-white" />
           {isHomeSelected && (
-            <span className="w-5 h-5 rounded-full bg-fifa-gold flex items-center justify-center shadow-lg shadow-fifa-gold/20">
-              <Check size={12} strokeWidth={3} className="text-fifa-dark" />
+            <span className="w-6 h-6 rounded-full bg-gradient-to-br from-fifa-gold to-amber-500 flex items-center justify-center shadow-lg shadow-fifa-gold/30 animate-scale-in">
+              <Check size={14} strokeWidth={3} className="text-fifa-dark" />
             </span>
           )}
         </div>
@@ -71,20 +71,20 @@ const KnockoutMatchCard = ({ match, prediction, onSelectWinner, matchLabel }) =>
         {/* Away Team Row */}
         <div
           onClick={handleSelectAway}
-          className={`knockout-team ${
+          className={`knockout-team transition-all duration-300 ${
             !awayTeam
-              ? 'knockout-team-tbd'
+              ? 'knockout-team-tbd opacity-40 cursor-default'
               : isAwaySelected
-              ? 'knockout-team-selected'
+              ? 'knockout-team-selected bg-gradient-to-r from-fifa-gold/15 to-transparent border-l-2 border-fifa-gold'
               : isAwayEliminated
-              ? 'knockout-team-eliminated'
-              : 'hover:bg-white/5'
+              ? 'knockout-team-eliminated opacity-30'
+              : 'hover:bg-white/5 cursor-pointer'
           }`}
         >
-          <TeamName team={awayTeam} flagSize={20} className="text-xs font-semibold flex-1 text-white" />
+          <TeamName team={awayTeam} flagSize={22} className="text-sm font-bold flex-1 text-white" />
           {isAwaySelected && (
-            <span className="w-5 h-5 rounded-full bg-fifa-gold flex items-center justify-center shadow-lg shadow-fifa-gold/20">
-              <Check size={12} strokeWidth={3} className="text-fifa-dark" />
+            <span className="w-6 h-6 rounded-full bg-gradient-to-br from-fifa-gold to-amber-500 flex items-center justify-center shadow-lg shadow-fifa-gold/30 animate-scale-in">
+              <Check size={14} strokeWidth={3} className="text-fifa-dark" />
             </span>
           )}
         </div>

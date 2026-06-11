@@ -24,7 +24,7 @@ const BracketColumn = ({
   isLocked = false,
 }) => {
   return (
-    <div className={`flex flex-col gap-4 min-w-[260px] max-w-[320px] flex-1 ${isLocked ? 'opacity-40 select-none pointer-events-none' : ''}`}>
+    <div className={`flex flex-col gap-4 min-w-[280px] max-w-[340px] flex-1 transition-all duration-300 ${isLocked ? 'opacity-50 select-none pointer-events-none blur-sm' : ''}`}>
       {/* Round Header */}
       <RoundLabel
         title={title}
@@ -33,7 +33,7 @@ const BracketColumn = ({
       />
 
       {/* Match Cards */}
-      <div className="flex flex-col gap-6 justify-around h-full py-4">
+      <div className="flex flex-col gap-5 justify-around h-full py-4">
         {matches.map((match, idx) => {
           const matchNum = idx + 1;
           const matchLabel = `${roundPrefix} Match ${matchNum}`;
