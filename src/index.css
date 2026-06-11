@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================
+   Base Styles
+   ============================ */
+@layer base {
+  body {
+    @apply bg-fifa-dark text-gray-100 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-fifa-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-fifa-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-fifa-muted;
+  }
+
+  /* Custom number input — no spinners */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+/* ============================
+   Component Styles
+   ============================ */
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-fifa-card/80 backdrop-blur-xl border border-fifa-border/50 rounded-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-fifa-gold via-yellow-300 to-fifa-gold;
+  }
+
+  /* Glow effect on hover */
+  .glow-hover {
+    @apply transition-all duration-300;
+  }
+  .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.15), 0 0 40px rgba(0, 63, 138, 0.1);
+  }
+
+  /* Match card styling */
+  .match-card {
+    @apply glass-card p-4 transition-all duration-300 hover:border-fifa-gold/30;
+  }
+
+  /* Score input field */
+  .score-input {
+    @apply w-14 h-12 text-center text-xl font-bold bg-fifa-dark/80 border-2 border-fifa-border 
+           rounded-lg text-white focus:outline-none focus:border-fifa-gold focus:ring-1 
+           focus:ring-fifa-gold/50 transition-all duration-200;
+  }
+  .score-input-predicted {
+    @apply border-fifa-gold/60;
+  }
+  .score-input-empty {
+    @apply border-amber-500/40;
+  }
+
+  /* Group tab */
+  .group-tab {
+    @apply px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200 
+           whitespace-nowrap cursor-pointer;
+  }
+  .group-tab-active {
+    @apply bg-fifa-gold text-fifa-dark shadow-lg shadow-fifa-gold/20;
+  }
+  .group-tab-inactive {
+    @apply bg-fifa-card text-fifa-muted hover:text-white hover:bg-fifa-border;
+  }
+  .group-tab-complete {
+    @apply ring-2 ring-emerald-500/40;
+  }
+
+  /* Qualification badges */
+  .badge-winner {
+    @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+  .badge-runnerup {
+    @apply bg-blue-500/20 text-blue-400 border border-blue-500/30;
+  }
+  .badge-third {
+    @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+  }
+  .badge-eliminated {
+    @apply bg-gray-500/20 text-gray-500 border border-gray-500/30;
+  }
+
+  /* Knockout match card */
+  .knockout-card {
+    @apply glass-card overflow-hidden transition-all duration-300;
+  }
+  .knockout-team {
+    @apply flex items-center gap-3 px-4 py-3 cursor-pointer transition-all duration-200;
+  }
+  .knockout-team-selected {
+    @apply bg-fifa-gold/15 border-l-4 border-l-fifa-gold;
+  }
+  .knockout-team-eliminated {
+    @apply opacity-40;
+  }
+  .knockout-team-tbd {
+    @apply opacity-30 cursor-not-allowed;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
+           text-gray-400 hover:text-white hover:bg-white/5;
+  }
+  .nav-link-active {
+    @apply text-fifa-gold bg-fifa-gold/10;
+  }
+
+  /* Progress bar */
+  .progress-track {
+    @apply w-full h-2.5 bg-fifa-border rounded-full overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out
+           bg-gradient-to-r from-fifa-blue via-fifa-gold to-emerald-500;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-gradient-to-r from-fifa-card via-fifa-border to-fifa-card bg-[length:200%_100%] 
+           animate-shimmer rounded-lg;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply px-6 py-2.5 bg-fifa-gold text-fifa-dark font-semibold rounded-lg 
+           hover:bg-yellow-400 active:bg-yellow-500 transition-all duration-200 
+           shadow-lg shadow-fifa-gold/20 hover:shadow-fifa-gold/40;
+  }
+  .btn-danger {
+    @apply px-6 py-2.5 bg-red-600 text-white font-semibold rounded-lg
+           hover:bg-red-500 active:bg-red-700 transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply px-6 py-2.5 bg-transparent text-gray-300 font-semibold rounded-lg
+           border border-fifa-border hover:bg-fifa-border/50 transition-all duration-200;
+  }
+}
+
+/* ============================
+   Utility Styles
+   ============================ */
+@layer utilities {
+  /* Hide scrollbar for group tabs on mobile */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Background gradient mesh for hero */
+  .bg-mesh {
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(0, 63, 138, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(245, 166, 35, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 40% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+  }
+}
