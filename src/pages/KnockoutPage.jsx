@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTournament } from '../hooks/useTournament';
 import PageWrapper from '../components/layout/PageWrapper';
 import BracketView from '../components/knockout/BracketView';
@@ -9,6 +9,7 @@ import { Lock, ArrowRight, Award, Trophy } from 'lucide-react';
  * Enforces locking rules, rendering a locked card if group stage is incomplete.
  */
 const KnockoutPage = () => {
+  const navigate = useNavigate();
   const {
     groupStageComplete,
     predictedMatchCount,
@@ -17,6 +18,17 @@ const KnockoutPage = () => {
     updateKnockoutWinner,
     champion,
   } = useTournament();
+
+  const handleSelectWinner = (matchId, winnerId) => {
+    updateKnockoutWinner(matchId, winnerId);
+    if (matchId === 'FINAL') {
+      if (knockoutPredictions['FINAL']?.winnerId !== winnerId) {
+        setTimeout(() => {
+          navigate('/champion');
+        }, 600);
+      }
+    }
+  };
 
   return (
     <PageWrapper className="flex flex-col gap-8 md:gap-10 max-w-full">
@@ -89,7 +101,7 @@ const KnockoutPage = () => {
           <BracketView
             bracket={knockoutBracket}
             predictions={knockoutPredictions}
-            onSelectWinner={updateKnockoutWinner}
+            onSelectWinner={handleSelectWinner}
           />
         </div>
       )}
